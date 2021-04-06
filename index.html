@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poopycorn</title>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div class="center-canvas" id="game">
+      <canvas
+        id="obstacles"
+        width="1000"
+        height="467
+      "
+      ></canvas>
+      <div class="buttons">
+        <div class="btn-p">
+          <img src="./public/images/keyLeft.png" alt="left key" class="arrows" />
+          <p>Moves left</p>
+        </div>
+        <div class="btn-p">
+          <img src="./public/images/keyRight.png" alt="right key" class="arrows" />
+          <p>Moves right</p>
+        </div>
+        <div class="btn-p">
+          <img src="./public/images/space-bar-icon-26.png" alt="space key" class="space" />
+          <p>Jump</p>
+        </div>
+        <div class="btn-p">
+          <img src="./public/images/bonus.png" alt="star bonus" class="bonusStar" />
+          <p>Bonus</p>
+        </div>
+      </div>
+    </div>
+    <div class="center-intro">
+      <div id="gameIntro">
+        <img
+          src="./public/images/poopyCornLogo.png"
+          alt="poopycorn"
+          class="logo-img"
+        />
+        <button id="startGame">
+          <img
+            class="start-btn"
+            src="./public/images/pressStart.png"
+            alt="start button"
+          />
+        </button>
+      </div>
+    </div>
+    <script src="Player.js"></script>
+    <script src="Game.js"></script>
+    <script src="Index.js"></script>
+    <script src="Obstacle.js"></script>
+    <script src="Stars.js"></script>
+  </body>
+</html>

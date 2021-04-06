@@ -1,0 +1,80 @@
+.center-canvas {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+  display: none;
+}
+.center-intro {
+  display: grid;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+canvas {
+  border: 5px solid salmon;
+}
+
+#gameIntro {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 5px solid salmon;
+  width: 1000px;
+  height: 467px;
+}
+
+.logo-img {
+  width: 350px;
+  margin-left: 75px;
+}
+
+#startGame {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  margin-right: 75px;
+  border: 10px solid cornflowerblue;
+}
+
+.start-btn {
+  height: 200px;
+  width: 300px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 0%;
+}
+
+.arrows {
+  height: 65px;
+  width: 70px;
+}
+
+.space {
+  height: 65px;
+  width: 110px;
+}
+
+.bonusStar {
+  margin-top: 9px;
+  width: 70px;
+  height: 60px;
+}
+
+p {
+  margin-top: 0%;
+  font: 20px Impact;
+}
+
+.btn-p {
+  display: flex;
+  flex-direction: row;
+}
+.btn-p > p {
+  margin-left: 15px;
+  margin-top: 20px;
+}
