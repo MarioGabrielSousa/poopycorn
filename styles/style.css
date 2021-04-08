@@ -78,3 +78,9 @@ p {
   margin-left: 15px;
   margin-top: 20px;
 }
+.restart-btn {
+  position: absolute;
+  width: 125px;
+  top: 360px;
+  right: 660px;
+}

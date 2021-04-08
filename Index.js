@@ -5,6 +5,7 @@ const backgroundMusic = new Audio(
 );
 let obstacles = [];
 let stars = [];
+let fastPoopies = [];
 let gameOver = false;
 let intervalId;
 let powerUpPoints = 0;
@@ -14,7 +15,7 @@ const gameArea = {
   points: 0,
 
   stop: function () {
-    cancelAnimationFrame(interval);
+    cancelAnimationFrame(intervalId);
   },
   clear: function () {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -27,9 +28,22 @@ const gameArea = {
     context.fillStyle = "black";
     context.fillText(`${this.points} pts.`, 550, 175);
   },
+  restart: function () {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    gameOver = false;
+    player.lives = 3;
+    player.x = 0;
+    obstacles = [];
+    stars = [];
+    fastPoopies = [];
+    this.frames = 0;
+    this.score();
+    document.getElementById("restartGame").style.display = "none";
+    updateGameArea();
+  },
   score: function () {
     //calcular os pontos pela soma de frames, que não pára a não ser que seja game over
-    let gamePoints = Math.floor(this.frames / 5); //Q. Porquê 5?
+    let gamePoints = Math.floor(this.frames / 5); //Q. Porquê 5? Para dar um número de score aceitável, se não seria enorme
     this.points = gamePoints + powerUpPoints;
     context.font = "20px Impact";
     context.fillStyle = "white";
@@ -55,8 +69,8 @@ const backgroundImage = {
 };
 
 function hitBottom() {
-  //declarar o jogador chega ao fundo e não o ultrapassa
-  let rockBottom = canvas.height - player.height - 45;
+  //declara que o jogador chega ao fundo e não o ultrapassa
+  let rockBottom = canvas.height - player.height - 41;
   if (player.y > rockBottom) {
     player.y = rockBottom;
     player.vy = 0;
@@ -76,14 +90,14 @@ function updateGameArea() {
   checkStar();
   if (!gameOver) {
     gameArea.score();
+    intervalId = requestAnimationFrame(updateGameArea);
   }
-  intervalId = requestAnimationFrame(updateGameArea);
 }
 
 const player = new Player();
 
 document.addEventListener("keydown", (e) => {
-  e.preventDefault(); //é o que impede o comportamento default, que neste caso se refere à tecla space, pois faz scroll down do ecrã ao ser pressionada
+  e.preventDefault();
   if (gameOver === false) {
     if (e.keyCode === 32) {
       console.log("y", player.y);
@@ -105,11 +119,15 @@ document.addEventListener("keyup", (e) => {
 
 function updateObstacles() {
   for (let i = 0; i < obstacles.length; i++) {
-    obstacles[i].x -= 1;
+    obstacles[i].x -= 2;
     obstacles[i].update();
   }
+  for (let i = 0; i < fastPoopies.length; i++) {
+    fastPoopies[i].x -= 4;
+    fastPoopies[i].update();
+  }
   for (let i = 0; i < stars.length; i++) {
-    stars[i].x -= 3;
+    stars[i].x -= 4;
     stars[i].update();
   }
 
@@ -127,9 +145,21 @@ function updateObstacles() {
     obstacles.push(obstacleBottom);
   }
 
+  if (gameArea.frames % 100 === 0) {
+    let height = 150;  
+     let otherObstacleBottom = new fastPoop(
+      150,
+      height,
+      canvas.width,
+      canvas.height - height - 50
+    );
+    fastPoopies.push(otherObstacleBottom);
+  }
+
   if (gameArea.frames % 1000 === 0) {
     let height = 70;
-    let obstacleTop = new Star(90, height, canvas.width, 100);
+    let randomY = Math.floor(Math.random() * (250 - 80 + 1) + 80);
+    let obstacleTop = new Star(90, height, canvas.width, randomY);
     stars.push(obstacleTop);
   }
 }
@@ -148,7 +178,6 @@ function checkStar() {
 }
 
 function checkGameOver() {
-  //a função que verifica se as condições para o fim de jogo estão reunidas
   const crashed = obstacles.some((obstacle, index) => {
     if (obstacle.crashWith(player) && player.lives < 2) {
       return true;
@@ -164,13 +193,18 @@ function checkGameOver() {
     gameArea.clear();
     gameOver = true;
     gameArea.stop();
+    document.getElementById("restartGame").style.display = "block";
   }
 }
 
 document.getElementById("startGame").onclick = () => {
   document.getElementById("gameIntro").style.display = "none";
-  document.getElementById("game").style.display = "grid"; //Q. ?
+  document.getElementById("game").style.display = "grid";
 
   backgroundMusic.play();
   updateGameArea();
 };
+
+function restartGame() {
+  gameArea.restart();
+}

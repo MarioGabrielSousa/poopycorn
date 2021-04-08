@@ -16,19 +16,35 @@
       ></canvas>
       <div class="buttons">
         <div class="btn-p">
-          <img src="./public/images/keyLeft.png" alt="left key" class="arrows" />
-          <p>Moves left</p>
+          <img
+            src="./public/images/keyLeft.png"
+            alt="left key"
+            class="arrows"
+          />
+          <p>Move left</p>
         </div>
         <div class="btn-p">
-          <img src="./public/images/keyRight.png" alt="right key" class="arrows" />
-          <p>Moves right</p>
+          <img
+            src="./public/images/keyRight.png"
+            alt="right key"
+            class="arrows"
+          />
+          <p>Move right</p>
         </div>
         <div class="btn-p">
-          <img src="./public/images/space-bar-icon-26.png" alt="space key" class="space" />
+          <img
+            src="./public/images/space-bar-icon-26.png"
+            alt="space key"
+            class="space"
+          />
           <p>Jump</p>
         </div>
         <div class="btn-p">
-          <img src="./public/images/bonus.png" alt="star bonus" class="bonusStar" />
+          <img
+            src="./public/images/bonus.png"
+            alt="star bonus"
+            class="bonusStar"
+          />
           <p>Bonus</p>
         </div>
       </div>
@@ -49,10 +65,17 @@
         </button>
       </div>
     </div>
+    <button id="restartGame" style="display: none;" onclick="restartGame()">
+      <img
+        class="restart-btn"
+        src="./public/images/reset.png"
+        alt="start button"
+      />
+    </button>
     <script src="Player.js"></script>
     <script src="Game.js"></script>
     <script src="Index.js"></script>
     <script src="Obstacle.js"></script>
-    <script src="Stars.js"></script>
+    <!-- <script src="Stars.js"></script> -->
   </body>
 </html>

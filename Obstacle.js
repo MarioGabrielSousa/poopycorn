@@ -38,3 +38,21 @@ class Obstacle {
     );
   }
 }
+
+class fastPoop extends Obstacle {
+  constructor(width, height, x, y) {
+    super(width, height, x, y);
+    this.speedX = 0;
+    this.speedY = 0;
+    this.img = "./public/images/rainbowpoopy2.png";
+  }
+}
+
+class Star extends Obstacle {
+  constructor(width, height, x, y) {
+    super(width, height, x, y);
+    this.speedX = 0;
+    this.speedY = 0;
+    this.img = "./public/images/bonus.png";
+  }
+}
