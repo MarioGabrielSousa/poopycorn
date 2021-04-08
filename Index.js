@@ -5,6 +5,7 @@ const backgroundMusic = new Audio(
 );
 let obstacles = [];
 let stars = [];
+let rainbowPoopies = [];
 let fastPoopies = [];
 let gameOver = false;
 let intervalId;
@@ -88,6 +89,7 @@ function updateGameArea() {
   updateObstacles();
   checkGameOver();
   checkStar();
+  checkRainbowPoopy();
   if (!gameOver) {
     gameArea.score();
     intervalId = requestAnimationFrame(updateGameArea);
@@ -146,8 +148,8 @@ function updateObstacles() {
   }
 
   if (gameArea.frames % 100 === 0) {
-    let height = 150;  
-     let otherObstacleBottom = new fastPoop(
+    let height = 150;
+    let otherObstacleBottom = new fastPoop(
       150,
       height,
       canvas.width,
@@ -161,6 +163,18 @@ function updateObstacles() {
     let randomY = Math.floor(Math.random() * (250 - 80 + 1) + 80);
     let obstacleTop = new Star(90, height, canvas.width, randomY);
     stars.push(obstacleTop);
+  }
+}
+
+function checkRainbowPoopy() {
+  let rainbowPoopyIndex;
+  const rainbowCrash = rainbowPoopies.some((rainbowPoopy, index) => {
+    rainbowPoopyIndex = index;
+    return rainbowPoopy.crashWith(player);
+  });
+  if (rainbowCrash) {
+    powerUpPoints -= 100;
+    rainbowPoopies.splice(rainbowPoopyIndex, 1);
   }
 }
 
@@ -208,3 +222,7 @@ document.getElementById("startGame").onclick = () => {
 function restartGame() {
   gameArea.restart();
 }
+
+/* function gainPoints() {
+  document.getElementById("gameIntro").style.display = "none";
+} */
