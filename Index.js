@@ -151,19 +151,19 @@ function updateObstacles() {
   for (let i = 0; i < fastPoopies.length; i++) {
     fastPoopies[i].x -= 4;
     if (
-      (fastPoopies[i].y > 160 &&
+      (fastPoopies[i].y > 180 &&
         fastPoopies[i].x < 1000 &&
         fastPoopies[i].x > 900) ||
-      (fastPoopies[i].y > 160 &&
+      (fastPoopies[i].y > 180 &&
         fastPoopies[i].x < 800 &&
         fastPoopies[i].x > 700) ||
-      (fastPoopies[i].y > 160 &&
+      (fastPoopies[i].y > 180 &&
         fastPoopies[i].x < 600 &&
         fastPoopies[i].x > 500) ||
-      (fastPoopies[i].y > 160 &&
+      (fastPoopies[i].y > 180 &&
         fastPoopies[i].x < 400 &&
         fastPoopies[i].x > 300) ||
-      (fastPoopies[i].y > 160 &&
+      (fastPoopies[i].y > 180 &&
         fastPoopies[i].x < 200 &&
         fastPoopies[i].x > 100)
     ) {

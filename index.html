@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
+
+      <img
+      id="restartGame"
+      style="display: none"
+      onclick="restartGame()"
+        class="restart-btn"
+        src="./public/images/reset.png"
+        alt="start button"
+      />
+
     <div class="center-canvas" id="game">
       <canvas
         id="obstacles"
@@ -65,7 +75,7 @@
         </button>
       </div>
     </div>
-    <button id="restartGame" style="display: none;" onclick="restartGame()">
+    <button id="restartGame" style="display: none" onclick="restartGame()">
       <img
         class="restart-btn"
         src="./public/images/reset.png"

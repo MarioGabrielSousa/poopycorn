@@ -79,8 +79,15 @@ p {
   margin-top: 20px;
 }
 .restart-btn {
-  position: absolute;
+  position: relative;
   width: 125px;
-  top: 360px;
-  right: 660px;
+  top: 25rem;
+  left: 8%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
